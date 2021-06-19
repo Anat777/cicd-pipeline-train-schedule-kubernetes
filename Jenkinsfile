@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         //be sure to replace "willbla" with your own Docker Hub username
-        DOCKER_IMAGE_NAME = "Anat777/train-schedule"
+        DOCKER_IMAGE_NAME = "willbla/train-schedule"
     }
     stages {
         stage('Build') {
@@ -38,7 +38,7 @@ pipeline {
                 }
             }
         }
-           stage('DeployToProduction') {
+       stage('DeployToProduction') {
             when {
                 branch 'master'
             }
@@ -50,8 +50,6 @@ pipeline {
                     configs: 'train-schedule-kube.yml',
                     enableConfigSubstitution: true
                 )
-            }
-        }
             }
         }
     }
